@@ -149,6 +149,10 @@ patch -p1 < $BUILDBASE/android/lineage/.repo/local_manifests/patches/bionic_intr
 cd $BUILDBASE/android/lineage/frameworks/base
 patch -p1 < $BUILDBASE/android/lineage/.repo/local_manifests/patches/frameworks_base_nvcpl.patch
 
+# test joycon mouse patch
+cd $BUILDBASE/android/lineage/frameworks/base
+patch -p1 < $CWD/patches/frameworks_base_mouse.patch
+
 # cpu oc patch
 if [ $CPUOC = "y" ];
 then
