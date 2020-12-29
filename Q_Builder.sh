@@ -82,12 +82,9 @@ then
 	cd $BUILDBASE
 
 	# check for platform tools in PATH, add if missing
-	if [ ! grep -q"PATH=\"$HOME/platform-tools:$PATH\"""~/.profile" ]; 
-    then
-		echo "if [ -d \"$HOME/platform-tools\" ] ; then" >> ~/.profile
-		echo "    PATH=\"$HOME/platform-tools:$PATH\"" >> ~/.profile
-		echo "fi" >> ~/.profile
-	fi
+	echo "if [ -d \"$HOME/platform-tools\" ] ; then" >> ~/.profile
+	echo "    PATH=\"$HOME/platform-tools:$PATH\"" >> ~/.profile
+	echo "fi" >> ~/.profile
 	
 	# create directories and get repo
 	mkdir -p $BUILDBASE/bin
@@ -103,13 +100,10 @@ then
 	chmod a+x $BUILDBASE/bin/repo
 	
 	# check for bin in PATH, add if missing
-	if [ ! grep -q"PATH="$HOME/bin:$PATH"""~/.profile" ]; 
-    then
-		sudo echo "if [ -d "$HOME/bin" ] ; then" >> ~/.profile
-		sudo echo "    PATH="$HOME/bin:$PATH"" >> ~/.profile
-		sudo echo "fi" >> ~/.profile
-		sudo echo "" >> ~/.profile
-	fi
+	sudo echo "if [ -d "$HOME/bin" ] ; then" >> ~/.profile
+	sudo echo "    PATH="$HOME/bin:$PATH"" >> ~/.profile
+	sudo echo "fi" >> ~/.profile
+	sudo echo "" >> ~/.profile
 
 	# initialize repo, sync
 	cd $BUILDBASE/android/lineage
