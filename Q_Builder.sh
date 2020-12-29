@@ -103,7 +103,7 @@ then
 	chmod a+x $BUILDBASE/bin/repo
 	
 	# check for bin in PATH, add if missing
-	if ! grep -q "PATH="$HOME/bin:$PATH" "~/.profile" ; 
+	if ! grep -q "PATH="$HOME/bin:$PATH"" "~/.profile" ; 
     then
 		sudo echo "if [ -d "$HOME/bin" ] ; then" >> ~/.profile
 		sudo echo "    PATH="$HOME/bin:$PATH"" >> ~/.profile
