@@ -11,10 +11,7 @@ JOBS=$(($(nproc) + 1))
 
 # prompt for root and install necessary packages
 sudo apt update
-sudo apt install bc bison build-essential ccache curl flex g++-multilib gcc-multilib git gnupg gperf 
-> imagemagick lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool libncurses5 libncurses5-dev 
-> libsdl1.2-dev libssl-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc 
-> zip zlib1g-dev python python3 binfmt-support qemu qemu-user-static
+sudo apt install bc bison build-essential ccache curl flex g++-multilib gcc-multilib git gnupg gperf imagemagick lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool libncurses5 libncurses5-dev libsdl1.2-dev libssl-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc unzip zip zlib1g-dev python python3 binfmt-support qemu qemu-user-static
 
 # rom type?
 while true; do
@@ -106,11 +103,12 @@ then
 	chmod a+x $BUILDBASE/bin/repo
 	
 	# check for bin in PATH, add if missing
-	if [ ! grep -q "PATH=\"$HOME/bin:$PATH\"" ~/.profile ]; 
+	if [ ! grep -q "    PATH="$HOME/bin:$PATH"" ~/.profile ]; 
     then
-		echo "if [ -d \"$HOME/bin\" ] ; then" >> ~/.profile
-		echo "    PATH=\"$HOME/bin:$PATH\"" >> ~/.profile
-		echo "fi" >> ~/.profile
+		sudo echo "if [ -d "$HOME/bin" ] ; then" >> ~/.profile
+		sudo echo "    PATH="$HOME/bin:$PATH"" >> ~/.profile
+		sudo echo "fi" >> ~/.profile
+		sudo echo "" >> ~/.profile
 	fi
 
 	# initialize repo, sync
