@@ -82,7 +82,7 @@ then
 	cd $BUILDBASE
 
 	# check for platform tools in PATH, add if missing
-	if [ ! grep -q "PATH=\"$HOME/platform-tools:$PATH\"" ~/.profile ]; 
+	if [ ! grep -q "$HOME/platform-tools:$PATH" ~/.profile]; 
     then
 		echo "if [ -d \"$HOME/platform-tools\" ] ; then" >> ~/.profile
 		echo "    PATH=\"$HOME/platform-tools:$PATH\"" >> ~/.profile
@@ -103,7 +103,7 @@ then
 	chmod a+x $BUILDBASE/bin/repo
 	
 	# check for bin in PATH, add if missing
-	if [ ! grep -q "PATH="$HOME/bin:$PATH"" ~/.profile ]; 
+	if [ ! grep -q "$HOME/bin:$PATH" ~/.profile ]; 
     then
 		sudo echo "if [ -d "$HOME/bin" ] ; then" >> ~/.profile
 		sudo echo "    PATH="$HOME/bin:$PATH"" >> ~/.profile
